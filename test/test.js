@@ -1,7 +1,7 @@
 var expect = require('expect')
 var Nuclear = require('nuclear-js')
 
-var NuclearModule = require('./')
+var NuclearModule = require('../src')
 
 // we are gonna slowly build a counter module.
 

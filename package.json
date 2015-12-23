@@ -2,7 +2,7 @@
   "name": "nuclear-module",
   "version": "0.1.0",
   "description": "An opiniated way of writing nuclear-js modules.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "clean": "rm -rf lib coverage",
     "test": "./node_modules/mocha/bin/_mocha --reporter spec --compilers js:babel-core/register",
@@ -15,7 +15,6 @@
   "author": "Umut Sirin <umutsirin1@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash.assign": "^3.2.0",
     "lodash.foreach": "^3.0.3",
     "lodash.isarray": "^3.0.4",
     "lodash.omit": "^3.1.0",
