@@ -4,8 +4,13 @@
   "description": "An opiniated way of writing nuclear-js modules.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/_mocha --reporter spec",
-    "test:watch": "npm test -- --watch"
+    "clean": "rm -rf lib coverage",
+    "test": "./node_modules/mocha/bin/_mocha --reporter spec --compilers js:babel-core/register",
+    "test:watch": "npm test -- --watch",
+    "build:lib": "./node_modules/.bin/babel ./src --out-dir ./lib",
+    "build": "npm run build:lib",
+    "prepublish": "npm run clean && npm run build",
+    "postpublish": "npm run clean"
   },
   "author": "Umut Sirin <umutsirin1@gmail.com>",
   "license": "MIT",
