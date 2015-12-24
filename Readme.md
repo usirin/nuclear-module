@@ -53,7 +53,9 @@ var actionTypes = require('../actionTypes')
 // storeDefinition to be used to initialize a Nuclear.Store
 
 module.exports = {
-  name: 'counter',
+  getInitialState() {
+    return 0
+  },
   handlers: [
     {
       type: actionTypes.INCREMENT,
@@ -75,7 +77,7 @@ module.exports = {
 // counter/getters.js
 
 module.exports = {
-  count: ['counter']
+  count: ['count']
 }
 ```
 
@@ -91,9 +93,9 @@ the actions has `reactor` instance as their first argument.
 NuclearModule = require('nuclear-module')
 
 module.exports = NuclearModule({
-  stores: [
-    require('./stores/counter')
-  ],
+  stores: {
+    count: require('./stores/counter')
+  },
   actions: require('./actions'),
   getters: require('./getters')
 })
