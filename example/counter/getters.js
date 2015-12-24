@@ -1,4 +1,4 @@
 module.exports = {
-  count: ['counter']
+  count: ['count']
 }
 
