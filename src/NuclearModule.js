@@ -5,13 +5,8 @@ import isArray from 'lodash.isarray'
 import each from 'lodash.foreach'
 import reduce from 'lodash.reduce'
 
-export default function NuclearModule(options) {
-  let stores = options.stores || {}
-  let actions = options.actions || {}
-  let getters = options.getters || {}
-
-  return function(reactor, StoreFactory) {
-    StoreFactory = StoreFactory || Store
+export default function NuclearModule({ stores = {}, actions = {}, getters = {} }) {
+  return (reactor, StoreFactory = Store) => {
 
     let _stores = stores.reduce((acc, store) => {
       let storeName = store.name
