@@ -9,10 +9,11 @@ describe('NuclearModule', function() {
   describe('#constructor', function() {
     it('registers nuclear stores to given reactor', function() {
       var CounterModule = NuclearModule({
-        stores: [{
-          name: 'counter',
-          getInitialState: () => 1
-        }]
+        stores: {
+          counter: {
+            getInitialState: () => 1
+          }
+        }
       })
 
       var reactor = new Nuclear.Reactor
@@ -27,10 +28,11 @@ describe('NuclearModule', function() {
       var expectedReactor = null
 
       var CounterModule = NuclearModule({
-        stores: [{
-          name: 'counter',
-          getInitialState: () => 1
-        }],
+        stores: {
+          counter: {
+            getInitialState: () => 1
+          }
+        },
         actions: {
           increment: function(reactor) {
             expectedReactor = reactor
@@ -48,14 +50,15 @@ describe('NuclearModule', function() {
 
     it('registers handlers from store definition', function() {
       var CounterModule = NuclearModule({
-        stores: [{
-          name: 'counter',
-          getInitialState() { return 1 },
-          handlers: [{
-            type: 'INCREMENT',
-            handler: (state) => state + 1
-          }]
-        }],
+        stores: {
+          count: {
+            getInitialState() { return 1 },
+            handlers: [{
+              type: 'INCREMENT',
+              handler: (state) => state + 1
+            }]
+          }
+        },
         actions: {
           increment: (reactor) => reactor.dispatch('INCREMENT')
         }
@@ -66,25 +69,26 @@ describe('NuclearModule', function() {
 
       counter.actions.increment()
 
-      expect(reactor.evaluate(['counter'])).toBe(2)
+      expect(reactor.evaluate(['count'])).toBe(2)
     })
 
     it('exports getters', function() {
 
       var CounterModule = NuclearModule({
-        stores: [{
-          name: 'counter',
-          getInitialState() { return 1 },
-          handlers: [{
-            type: 'INCREMENT',
-            handler: (state) => state + 1
-          }]
-        }],
+        stores: {
+          count: {
+            getInitialState() { return 1 },
+            handlers: [{
+              type: 'INCREMENT',
+              handler: (state) => state + 1
+            }]
+          }
+        },
         actions: {
           increment: (reactor) => reactor.dispatch('INCREMENT')
         },
         getters: {
-          count: ['counter']
+          count: ['count']
         }
       })
 
