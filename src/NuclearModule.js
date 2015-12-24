@@ -5,18 +5,10 @@ import isArray from 'lodash.isarray'
 import each from 'lodash.foreach'
 import reduce from 'lodash.reduce'
 
-export default function NuclearModule(options) {
-  let stores = options.stores || {}
-  let actions = options.actions || {}
-  let getters = options.getters || {}
+export default function NuclearModule({ stores = {}, actions = {}, getters = {} }) {
+  return (reactor, StoreFactory = Store) => {
 
-  return function(reactor, StoreFactory) {
-    StoreFactory = StoreFactory || Store
-
-    let _stores = stores.reduce((acc, store) => {
-      let storeName = store.name
-      let storeDefinition = omit(store, 'name')
-
+    let _stores = reduce(stores, (acc, storeDefinition, storeName) => {
       if (reactor.evaluate([storeName])) {
         // TODO: Show a warning unless `debug/dev` mode.
         return

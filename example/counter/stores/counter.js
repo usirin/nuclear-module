@@ -4,7 +4,9 @@ var actionTypes = require('../actionTypes')
 // storeDefinition to be used to initialize a Nuclear.Store
 
 module.exports = {
-  name: 'counter',
+  getInitialState() {
+    return 0
+  },
   handlers: [
     {
       type: actionTypes.INCREMENT,
