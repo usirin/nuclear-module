@@ -95,14 +95,14 @@ describe('NuclearModule', function() {
       var reactor = new Nuclear.Reactor
       var counter = CounterModule(reactor)
 
-      expect(reactor.evaluate(counter.getters.count)).toBe(1)
+      expect(reactor.evaluate(CounterModule.getters.count)).toBe(1)
 
       // let's duplicate to have an end-to-end test :)
 
       counter.actions.increment()
       counter.actions.increment()
 
-      expect(reactor.evaluate(counter.getters.count)).toBe(3)
+      expect(reactor.evaluate(CounterModule.getters.count)).toBe(3)
     })
 
   })

@@ -6,7 +6,7 @@ import each from 'lodash.foreach'
 import reduce from 'lodash.reduce'
 
 export default function NuclearModule({ stores = {}, actions = {}, getters = {} }) {
-  return (reactor, StoreFactory = Store) => {
+  const ModuleFactory = (reactor, StoreFactory = Store) => {
 
     let _stores = reduce(stores, (acc, storeDefinition, storeName) => {
       if (reactor.evaluate([storeName])) {
@@ -34,10 +34,13 @@ export default function NuclearModule({ stores = {}, actions = {}, getters = {} 
     reactor.registerStores(_stores)
 
     return {
-      getters: getters,
       actions: createActions(reactor, actions)
     }
   }
+
+  ModuleFactory.getters = getters
+
+  return ModuleFactory
 }
 
 function createActions(reactor, actions) {
