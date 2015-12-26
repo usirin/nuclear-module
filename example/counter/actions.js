@@ -1,13 +1,16 @@
-var actionTypes = require('./actionTypes')
+import {
+  INCREMENT,
+  DECREMENT
+} from '../actionTypes'
 
-module.exports = {
-  // registered reactor instance will be injected/curried here.
-  // removes the necessity of requiring a reactor singleton.
-  increment: (reactor) {
-    reactor.dispatch(actionTypes.INCREMENT)
+// registered reactor instance will be injected/curried to each actions.
+// removes the necessity of requiring a reactor singleton.
+export default {
+  increment(reactor) {
+    reactor.dispatch(INCREMENT)
   },
-  decrement: (reactor) {
-    reactor.dispatch(actionTypes.DECREMENT)
+  decrement(reactor) {
+    reactor.dispatch(DECREMENT)
   }
 }
 

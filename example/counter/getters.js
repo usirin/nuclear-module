@@ -1,4 +1,5 @@
-module.exports = {
+export default {
   count: ['count']
 }
+
 
