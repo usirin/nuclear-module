@@ -105,12 +105,13 @@ module.exports = NuclearModule({
 In any part of your app you can use it as following:
 
 ```js
-var CounterModule = require('some/path/counter')(reactor)
+import CounterModule from 'modules/counter'
+let { actions } = CounterModule(reactor)
 
-CounterModule.actions.increment()
+actions.increment()
 expect(reactor.evaluate(CounterModule.getters.count)).toBe(2)
 
-CounterModule.actions.decrement()
+actions.decrement()
 expect(reactor.evaluate(CounterModule.getters.count)).toBe(1)
 ```
 
