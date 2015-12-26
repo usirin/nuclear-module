@@ -1,4 +1,4 @@
-var NuclearModule = require('../../index')
+import NuclearModule from 'nuclear-module'
 
 module.exports = NuclearModule({
   stores: {

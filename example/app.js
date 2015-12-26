@@ -1,11 +1,8 @@
-var Nuclear = require('nuclear-js')
+import { Reactor } from 'nuclear-js'
+import CounterModule, { getters } from './counter'
 
-var reactor = new Nuclear.Reactor
-
-var CounterModule = require('./counter')(reactor)
-
-var actions = CounterModule.actions
-var getters = CounterModule.getters
+const reactor = new Reactor
+const { actions } = CounterModule(reactor)
 
 // read via getters
 reactor.evaluate(getters.count) // 1

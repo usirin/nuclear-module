@@ -1,22 +1,25 @@
-var actionTypes = require('../actionTypes')
+import {
+  INCREMENT,
+  DECREMENT
+} from '../actionTypes'
 
 // instead of exporting a store instance, we are exporting a slightly different
 // storeDefinition to be used to initialize a Nuclear.Store
 
-module.exports = {
+export default {
   getInitialState() {
     return 0
   },
   handlers: [
     {
-      type: actionTypes.INCREMENT,
-      handler: function(state) {
+      type: INCREMENT,
+      handler(state) {
         return state + 1
       }
     },
     {
-      type: actionTypes.DECREMENT,
-      handler: function(state) {
+      type: DECREMENT,
+      handler(state) {
         return state - 1
       }
     }
