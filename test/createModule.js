@@ -1,7 +1,7 @@
 import expect from 'expect'
 import { Reactor } from 'nuclear-js'
 
-import createModule from '../src/createModule'
+import { createModule } from '../src'
 
 describe('createModule()', () => {
   it('should throw when there is no name', () => {
