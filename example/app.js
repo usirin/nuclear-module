@@ -2,7 +2,6 @@ import { Reactor } from 'nuclear-js'
 import CounterModule from './counter'
 
 const reactor = new Reactor
-const { actions, getters } = CounterModule(reactor)
 
 // we can use named destructuring assignment to prevent name collisions since
 // all `NuclearModule`s export an object with the same structure (e.g they all

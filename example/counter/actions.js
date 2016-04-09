@@ -1,7 +1,7 @@
 import {
   INCREMENT,
   DECREMENT
-} from '../actionTypes'
+} from './actionTypes'
 
 // dispatch and evaluate functions are injected for you.
 export const increment = ({ dispatch, evaluate }) => () => dispatch(INCREMENT)

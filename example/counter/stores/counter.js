@@ -3,8 +3,8 @@ import {
   DECREMENT
 } from '../actionTypes'
 
-// instead of exporting a store instance, we are exporting a slightly different
-// storeDefinition to be used to initialize a Nuclear.Store
+// instead of exporting a store instance, we are exporting a store definition
+// to be used to initialize a store.
 
 export default {
   getInitialState() { return 0},
