@@ -1,5 +1,4 @@
 import { Store } from 'nuclear-js'
-import expect from 'expect'
 import omit from 'lodash.omit'
 import isArray from 'lodash.isarray'
 import each from 'lodash.foreach'
