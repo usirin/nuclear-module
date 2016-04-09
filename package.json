@@ -1,6 +1,6 @@
 {
   "name": "nuclear-module",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "An opiniated way of writing nuclear-js modules.",
   "main": "lib/index.js",
   "scripts": {
@@ -15,8 +15,10 @@
   "author": "Umut Sirin <umutsirin1@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "invariant": "^2.2.1",
     "lodash.foreach": "^3.0.3",
     "lodash.isarray": "^3.0.4",
+    "lodash.mapvalues": "^4.3.0",
     "lodash.omit": "^3.1.0",
     "lodash.reduce": "^3.1.2",
     "nuclear-js": "^1.2.1"

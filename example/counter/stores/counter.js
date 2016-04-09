@@ -3,26 +3,17 @@ import {
   DECREMENT
 } from '../actionTypes'
 
-// instead of exporting a store instance, we are exporting a slightly different
-// storeDefinition to be used to initialize a Nuclear.Store
+// instead of exporting a store instance, we are exporting a store definition
+// to be used to initialize a store.
 
 export default {
-  getInitialState() {
-    return 0
-  },
-  handlers: [
-    {
-      type: INCREMENT,
-      handler(state) {
-        return state + 1
-      }
-    },
-    {
-      type: DECREMENT,
-      handler(state) {
-        return state - 1
-      }
-    }
-  ]
+  getInitialState() { return 0},
+  initialize() {
+    this.on(INCREMENT, increment)
+    this.on(DECREMENT, decrement)
+  }
 }
+
+const increment = (count) => count + 1
+const decrement = (count) => count - 1
 

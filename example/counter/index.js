@@ -1,9 +1,9 @@
-import NuclearModule from 'nuclear-module'
+import { createModule } from 'nuclear-module'
 
-module.exports = NuclearModule({
-  stores: {
-    count: require('./stores/counter')
-  },
-  actions: require('./actions'),
-  getters: require('./getters')
+import * as actions from './actions'
+import * as getters from './getters'
+import * as stores from './stores'
+
+export default createModule('counter', {
+  stores, actions, getters
 })

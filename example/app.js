@@ -1,19 +1,37 @@
 import { Reactor } from 'nuclear-js'
-import CounterModule, { getters } from './counter'
+import CounterModule from './counter'
 
 const reactor = new Reactor
-const { actions } = CounterModule(reactor)
 
-// read via getters
-reactor.evaluate(getters.count) // 1
+// we can use named destructuring assignment to prevent name collisions since
+// all `NuclearModule`s export an object with the same structure (e.g they all
+// export an actions and a getters object)
+const {
+  actions: counterActions,
+  getters: counterGetters,
+  observers: counterObservers
+} = CounterModule(reactor)
 
-actions.increment()
-actions.increment()
-actions.increment()
+// getters we passed when creating the object is used to create functions which
+// will automatically call evaluate on the reactor instance and return the
+// result to you.
+counterGetters.count() // 1
 
-reactor.evaluate(getters.count) // 4
+counterActions.increment()
+counterActions.increment()
+counterActions.increment()
 
-actions.decrement()
-actions.decrement()
+counterGetters.count() // 4
 
-reactor.evaluate(getters.count) // 2
+counterActions.decrement()
+counterActions.decrement()
+
+counterGetters.count() // 2
+
+// you can pass a transform function to the getter function modify result.
+counterGetters.count(count => count * 10) // 20
+
+// use observers to get updates for getters.
+counterObservers.count(count => ReactDOM.render(<div>{count}</div>))
+
+
