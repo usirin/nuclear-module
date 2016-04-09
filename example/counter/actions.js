@@ -3,14 +3,8 @@ import {
   DECREMENT
 } from '../actionTypes'
 
-// registered reactor instance will be injected/curried to each actions.
-// removes the necessity of requiring a reactor singleton.
-export default {
-  increment(reactor) {
-    reactor.dispatch(INCREMENT)
-  },
-  decrement(reactor) {
-    reactor.dispatch(DECREMENT)
-  }
-}
+// dispatch and evaluate functions are injected for you.
+export const increment = ({ dispatch, evaluate }) => () => dispatch(INCREMENT)
+
+export const decrement = ({ dispatch, evaluate }) => () => dispatch(DECREMENT)
 

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'INCREMENT': 'INCREMENT',
   'DECREMENT': 'DECREMENT'
 }
