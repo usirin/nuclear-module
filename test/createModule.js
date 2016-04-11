@@ -25,6 +25,18 @@ describe('createModule()', () => {
     expect(reactor.evaluate(['counter'])).toBe(0)
   })
 
+  it('should export a getter function for registered name', () => {
+    const Counter = createModule('Counter', {
+      stores: {
+        counter: {
+          getInitialState() { return 0 },
+        }
+      }
+    })
+
+    expect(Counter.getName()).toBe('Counter')
+  })
+
   it('should have actions with dispatch and evaluate bounded to it', () => {
 
     const Counter = createModule('Counter', {

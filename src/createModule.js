@@ -33,6 +33,7 @@ export default function createModule(name, { stores = {}, actions = {}, getters 
     }
   }
 
+  Factory.getName = () => name
   Factory.getters = getters
   Factory.actions = actions
 
